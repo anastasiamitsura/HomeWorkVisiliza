@@ -33,19 +33,8 @@ public class User {
         return "Побед: " + this.win_count + "\nПоражений: " + this.lose_count + "\nВсего игр: " + games;
     }
 
-    public void setWin_count(int win_count) {
-        this.win_count = win_count;
-    }
-
-    public void setLose_count(int lose_count) {
-        this.lose_count = lose_count;
-    }
-
     public String getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
 }

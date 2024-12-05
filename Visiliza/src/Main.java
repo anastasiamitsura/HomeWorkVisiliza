@@ -11,7 +11,7 @@ public class Main {
         String ent = "";
         int status_game = 0;
         UserBase userBase = new UserBase();
-        System.out.println("Добрый день уважаемый пользователь игры Visiliza,\n" +
+        System.out.println("Добрый день, уважаемый пользователь, игры Visiliza,\n" +
                 "сейчас ты находишься в главном меню этой игры,\n" +
                 "чтобы начать игру тебе необходимо войти в аккаунт\n" +
                 "Правила игры:\n" +
