@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Data {
+public class Data { // класс для хранения датасета данных
     private String[] data = {
             "хакатон"
             , "бэкенд"

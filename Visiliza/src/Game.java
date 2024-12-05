@@ -1,21 +1,24 @@
 import java.util.Scanner;
 
-public class Game extends Data {
-
+public class Game {
     Scanner in = new Scanner(System.in);
-    private String word_start;
-    private String word_game;
+    private String word_start; // слово, которое нужно отгадать
+    private String word_game; // статус слова в игре
+    private int win_st; // победил игрок или нет
+    private int life_count; // количество жизней
+    private Data data = new Data(); // экземпляр класса Data
 
-    private int win_st = 0;
+    public Game() { //конструктор
+        this.word_start = data.getRandom();
+        this.word_game = "*".repeat(this.word_start.length());
+        this.win_st = 0;
+        this.life_count = 6;
+    }
 
-    private int life_count = 6;
 
-
-    public int game(){
+    public int game(){ // цикл игры
         int st = 1;
         String buck = "";
-        this.word_start = getRandom();
-        this.word_game = "*".repeat(this.word_start.length());
         System.out.println("Начало игры, у вас 6 жизней, размер вашего слова:");
         System.out.println(word_game);
         while (st != 0){
@@ -26,7 +29,7 @@ public class Game extends Data {
         return win_st;
     }
 
-    public String cheakWord(String buck){
+    public String cheakWord(String buck){ // проверка правильности буквы и, если она правильная, то вывод нового word_game
         String newword = "";
         if (this.word_start.contains(buck)){
             for(int i = 0; i < this.word_start.length(); i++){
@@ -43,65 +46,70 @@ public class Game extends Data {
         return "";
     }
 
-    public int hod(String buck){
+    public String getImg(){ // Получяение изображения виселицы
+        if (this.life_count == 5){
+            return
+                    "\n" +
+                            " \n" +
+                            "  \n" +
+                            "  \n" +
+                            "  \n" +
+                            "  \n" +
+                            "=========";
+        } else if (this.life_count == 4) {
+            return
+                    "+--------+\n" +
+                            "  |        \n" +
+                            "  |        \n" +
+                            "  |        \n" +
+                            "  |         \n" +
+                            "  |   \n" +
+                            "=========";
+        } else if (this.life_count == 3) {
+            return
+                    "+--------+\n" +
+                            "  |      |\n" +
+                            "  |      O\n" +
+                            "  |      |\n" +
+                            "  |        \n" +
+                            "  |   \n" +
+                            "=========";
+        } else if (this.life_count == 2) {
+            return
+                    "+--------+\n" +
+                            "  |      |\n" +
+                            "  |      O\n" +
+                            "  |     /|| \n" +
+                            "  |       \n" +
+                            "  |   \n" +
+                            "=========";
+
+        } else{
+            return "+--------+\n" +
+                    "  |      |\n" +
+                    "  |      O\n" +
+                    "  |     /|| \n" +
+                    "  |      /| \n" +
+                    "  |   \n" +
+                    "=========";
+        }
+    }
+
+    public int hod(String buck){ // процесс кода
         String w_game = this.word_game;
         String word = cheakWord(buck);
         if (word.equals("") && this.life_count > 1){
             this.life_count--;
             System.out.println("Не та буква");
             System.out.println("Количество жизней: " + this.life_count);
-            if (this.life_count == 5){
-                System.out.println(
-                        "\n" +
-                        " \n" +
-                        "  \n" +
-                        "  \n" +
-                        "  \n" +
-                        "  \n" +
-                        "=========");
-            } else if (this.life_count == 4) {
-                System.out.println(
-                        "+--------+\n" +
-                                "  |        \n" +
-                                "  |        \n" +
-                                "  |        \n" +
-                                "  |         \n" +
-                                "  |   \n" +
-                                "=========");
-            } else if (this.life_count == 3) {
-                System.out.println(
-                        "+--------+\n" +
-                                "  |      |\n" +
-                                "  |      O\n" +
-                                "  |      |\n" +
-                                "  |        \n" +
-                                "  |   \n" +
-                                "=========");
-            } else if (this.life_count == 2) {
-                System.out.println(
-                        "+--------+\n" +
-                                "  |      |\n" +
-                                "  |      O\n" +
-                                "  |     /|| \n" +
-                                "  |       \n" +
-                                "  |   \n" +
-                                "=========");
-
-            }
+            System.out.println(getImg());
             return 1;
         }
         else if (word.equals("") && this.life_count == 1){
             this.life_count--;
             System.out.println("Не та буква, вы проиграли");
             System.out.println("Количество жизней: " + this.life_count);
-            System.out.println(
-                    "+--------+\n" +
-                    "  |      |\n" +
-                    "  |      O\n" +
-                    "  |     /|| \n" +
-                    "  |      /| \n" +
-                    "  |   \n" +
-                    "=========");
+            System.out.println(getImg());
             win_st = 0;
             return 0;
         }

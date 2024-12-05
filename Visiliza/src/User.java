@@ -1,12 +1,9 @@
 public class User {
-    private String login;
-    private int win_count;
-    private int lose_count;
-    private int games_count = win_count + lose_count;
+    private String login; // логие пользователя
+    private int win_count; // количесво побед
+    private int lose_count; // количество проигрышев
 
-    private int[] statistic = {win_count, lose_count, games_count};
-
-    public User(String login) {
+    public User(String login) { // консруктор
         this.login = login;
         this.win_count = 0;
         this.lose_count = 0;
@@ -28,7 +25,7 @@ public class User {
         this.lose_count++;
     }
 
-    public String getStatistic() {
+    public String getStatistic() { //вывод статистики по пользователю
         int games = this.win_count + this.lose_count;
         return "Побед: " + this.win_count + "\nПоражений: " + this.lose_count + "\nВсего игр: " + games;
     }

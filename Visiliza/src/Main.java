@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    private String ent = "";
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String ent = "";
-        int status_game = 0;
-        UserBase userBase = new UserBase();
+        String ent = ""; // переменная, для ввода с консоли
+        int status_game = 0; // статус игры   см. внизу кода пояснение
+        UserBase userBase = new UserBase(); // локальная база данных игры
         System.out.println("Добрый день, уважаемый пользователь, игры Visiliza,\n" +
                 "сейчас ты находишься в главном меню этой игры,\n" +
                 "чтобы начать игру тебе необходимо войти в аккаунт\n" +
@@ -18,8 +16,8 @@ public class Main {
                 "У игрока есть 6 жизней\nЗа каждую неправильную букву снимается одна жизнь\n" +
                 "Датасет слов в игре - это ITшный сленг на русском языке\n\n" +
                 "Приятной игры!\n" +
-                "По всем вопросам обращаться к разработчику в телеграмм @anastasiamitsura");
-        while(true){
+                "По всем вопросам обращаться к разработчику в телеграмм @anastasiamitsura"); // вводное слово
+        while(true){ // цикл игры
             if (status_game == 0){
 
                 System.out.println("В главном меню тебе доступны функции:\n" +
