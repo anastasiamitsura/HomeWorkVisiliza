@@ -14,9 +14,9 @@ public class Data { // класс для хранения датасета да�
             , "гитхаб"
             , "айтишник"
             , "мобилка"};
+    int rnd = new Random().nextInt(data.length);
 
     public String getRandom() {
-        int rnd = new Random().nextInt(data.length);
         return data[rnd];
     }
 }
